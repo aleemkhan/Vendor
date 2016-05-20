@@ -214,10 +214,10 @@
         <script>
             var serverurl = 'http://jackbluck.com.cp-in-11.webhostbox.net/yjyapp/server.php';
         	var offset_val = 0;
-        	var map = {"HOME_CLEANER":"HOME_CLEANER", "HANGING_ITEMS":"HANDY_MAN",  "AC_INSTALLATION":"HANDY_MAN", "FURNITURE_ASSEMBLY":"HANDY_MAN", "MOVING_HELP":"HANDY_MAN", "DRAINS": "PLUMBER", "FAUCETS": "PLUMBER", "TOILETS": "PLUMBER", "GARBAGE_DISPOSAL": "PLUMBER", "LIGHTING": "ELECTRICIAN", "FANS": "ELECTRICIAN", "OUTLETS": "ELECTRICIAN", "SOMETHING_ELSE": "ELECTRICIAN"};
-        	var sicon = {"HOME_CLEANER":"icon1.png", "HANGING_ITEMS":"Hanging_items.jpg",  "AC_INSTALLATION":"ac.jpg", "FURNITURE_ASSEMBLY":"Furniture.jpg", "MOVING_HELP":"Moving.jpg", "DRAINS": "drains.jpg", "FAUCETS": "faucet.jpg", "TOILETS": "toilets.jpg", "GARBAGE_DISPOSAL": "garbages.jpg", "LIGHTING": "lights.jpg", "FANS": "fans.jpg", "OUTLETS": "switches.jpg", "SOMETHING_ELSE": "something-eles2.jpg"};
-        	var cicon = {"HOME_CLEANER":"icon1.png", "HANDY_MAN": "icon2.png", "PLUMBER":"icon3.png", "ELECTRICIAN": "icon4.png"};
-        	var catcol = {"HOME_CLEANER":"#8CC63F", "HANDY_MAN": "#43D1B9", "PLUMBER":"#FF5C5C", "ELECTRICIAN": "#FFB600"};
+            var map = {"HOME_CLEANER":"HOME_CLEANER", "HANGING_ITEMS":"HANDY_MAN",  "AC_INSTALLATION":"HANDY_MAN", "FURNITURE_ASSEMBLY":"HANDY_MAN", "MOVING_HELP":"HANDY_MAN", "DRAINS": "PLUMBER", "FAUCETS": "PLUMBER", "TOILETS": "PLUMBER", "GARBAGE_DISPOSAL": "PLUMBER", "LIGHTING": "ELECTRICIAN", "FANS": "ELECTRICIAN", "OUTLETS": "ELECTRICIAN", "SOMETHING_ELSE": "ELECTRICIAN", "TAXI":"TAXI"};
+            var sicon = {"HOME_CLEANER":"icon1.png", "HANGING_ITEMS":"Hanging_items.jpg",  "AC_INSTALLATION":"ac.jpg", "FURNITURE_ASSEMBLY":"Furniture.jpg", "MOVING_HELP":"Moving.jpg", "DRAINS": "drains.jpg", "FAUCETS": "faucet.jpg", "TOILETS": "toilets.jpg", "GARBAGE_DISPOSAL": "garbages.jpg", "LIGHTING": "lights.jpg", "FANS": "fans.jpg", "OUTLETS": "switches.jpg", "SOMETHING_ELSE": "something-eles2.jpg", "TAXI":"icon5.png"};
+            var cicon = {"HOME_CLEANER":"icon1.png", "HANDY_MAN": "icon2.png", "PLUMBER":"icon3.png", "ELECTRICIAN": "icon4.png", "TAXI":"icon5.png"};
+            var catcol = {"HOME_CLEANER":"#8CC63F", "HANDY_MAN": "#43D1B9", "PLUMBER":"#FF5C5C", "ELECTRICIAN": "#FFB600", "TAXI":"#EEEEEE"};
 
 
             var toggled = false;
@@ -365,6 +365,9 @@
                     break;
                     case "SOMETHING_ELSE":
                         title = "Something else";
+                    break;
+                    case "TAXI":
+                        title = "Taxi";
                     break;
                     default:
                     	title = "Annonymouse";
