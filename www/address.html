@@ -189,6 +189,10 @@
                         <input type="text"  class="form-control" id="phone" placeholder="Phone" style="margin-top:0px; border-radius:0px; box-shadow:none; height:49px;border:0px;"/>
                     </div>
                 </div>
+                <br><br>
+                <div id="verify">
+
+                </div>
             </div>
 
             <div id="error" class="text-center" style="padding:20px;"></div>
@@ -243,13 +247,60 @@
         <script>
             var serverurl = 'http://jackbluck.com.cp-in-11.webhostbox.net/yjyapp/server.php';
             var toggled = false;
+
             $( document ).ready(function() {
                 if(gdb("login")=="false"){
                         window.top.location="login.html";
                 }
-            $('#hidden_menu').css({'visibility': 'hidden'});
-            $( '#hidden_menu' ).toggle( 'slide', {direction : 'right'} );
+
+                $('#hidden_menu').css({'visibility': 'hidden'});
+                $( '#hidden_menu' ).toggle( 'slide', {direction : 'right'} );
+
+                
                 bioDataAssign();
+                if(gdb("fname") != null || gdb("fname")!= ""){
+                    if(gdb("verify")==null || gdb("verify")=="false"){
+                        var html = "";
+                        html +='<div class="row"  style="background-color:rgba(255,255,255,0);">';
+                        html +='<div class="col-xs-9"  style="padding:0px;">';
+                        html +='<input type="text"  class="form-control" id="verification_code" placeholder="Verfication Code" style="margin-top:0px; border-radius:0px; box-shadow:none;border:0px;"/>';
+                        html +='</div>';
+                        html +='<div class="col-xs-3" style="padding:0px;">';
+                        html +='<a href="#" class="btn btn-success col-xs-12" style="border-radius: 0px;" id="btnverify">Verify</a>';
+                        html +='</div>';
+                        html +='</div>';
+                        $("#verify").html(html);
+                    }
+                }
+                $("#btnverify").click(function(){
+                    $("#error").html('<img src="img/preloader.gif" />');
+                    var verify = $("#verification_code").val();
+                    $.ajax({
+                        type: 'GET',
+                        data: {'request': 'VERIFY_PHONE', 'email': $("#email").val(), 'verification_code' : $("#verification_code").val()},
+                        url: "http://jackbluck.com.cp-in-11.webhostbox.net/yjyapp/server.php",
+                        dataType: 'text',
+                        success: function(data){
+                            data = JSON.parse(data);
+                            console.log(data);
+                            if(data.STATUS == "OK"){
+                                $("#error").html(data.MSG);
+                                $("#verify").html("");
+                                sdb('verify', 'true');
+
+                            }else{
+                                console.log(data.STATUS);
+                                sdb('verify', 'false');
+                                $("#error").html(data.MSG);
+
+                            }
+                        },
+                        error: function(a, b, c){
+                            console.log("error occured. "+ b);
+                            $("#error").html("Something went wrong. Check your internet connectivity.");
+                        }
+                    });
+                });
                 $("#nextbtn").click(function(){
                     $("#error").html('<img src="img/preloader.gif" />');
                     var email = $("#email").val();
@@ -262,7 +313,7 @@
                     $.ajax({
                         type: 'GET',
                         data: {'request': 'SAVE_INFO', 'email' : email, 'fname' : fname, 'lname': lname, 'address' : address, 'apartment': apartment, 'phone': phone, 'code':code},
-                        url: serverurl,
+                        url: "http://jackbluck.com.cp-in-11.webhostbox.net/yjyapp/server.php",
                         dataType: 'text',
                         success: function(data){
                             data = JSON.parse(data);
